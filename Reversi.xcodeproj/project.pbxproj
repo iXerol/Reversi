@@ -19,6 +19,8 @@
 		C090BA5C1E7129C9002369FC /* CustomActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090BA5B1E7129C9002369FC /* CustomActivityView.swift */; };
 		C090BA5E1E7135F5002369FC /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090BA5D1E7135F5002369FC /* NewGameViewController.swift */; };
 		C09BAB2B1E71ADFA004DCAED /* rules.html in Resources */ = {isa = PBXBuildFile; fileRef = C09BAB2A1E71ADFA004DCAED /* rules.html */; };
+		C09BAB2D1E71C3EC004DCAED /* SimpleSplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09BAB2C1E71C3EC004DCAED /* SimpleSplashController.swift */; };
+		C09BAB301E71CEB0004DCAED /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = C09BAB2F1E71CEB0004DCAED /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,9 @@
 		C090BA5B1E7129C9002369FC /* CustomActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomActivityView.swift; sourceTree = "<group>"; };
 		C090BA5D1E7135F5002369FC /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		C09BAB2A1E71ADFA004DCAED /* rules.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = rules.html; sourceTree = "<group>"; };
+		C09BAB2C1E71C3EC004DCAED /* SimpleSplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSplashController.swift; sourceTree = "<group>"; };
+		C09BAB2E1E71CEA0004DCAED /* Summary.pages */ = {isa = PBXFileReference; lastKnownFileType = file; path = Summary.pages; sourceTree = "<group>"; };
+		C09BAB2F1E71CEB0004DCAED /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +73,7 @@
 		C090BA3E1E6F5443002369FC /* Reversi */ = {
 			isa = PBXGroup;
 			children = (
+				C09BAB2E1E71CEA0004DCAED /* Summary.pages */,
 				C090BA3F1E6F5443002369FC /* AppDelegate.swift */,
 				C090BA411E6F5443002369FC /* ViewController.swift */,
 				C090BA431E6F5443002369FC /* Main.storyboard */,
@@ -81,6 +87,8 @@
 				C090BA5B1E7129C9002369FC /* CustomActivityView.swift */,
 				C090BA5D1E7135F5002369FC /* NewGameViewController.swift */,
 				C09BAB2A1E71ADFA004DCAED /* rules.html */,
+				C09BAB2C1E71C3EC004DCAED /* SimpleSplashController.swift */,
+				C09BAB2F1E71CEB0004DCAED /* README.md */,
 			);
 			path = Reversi;
 			sourceTree = "<group>";
@@ -160,11 +168,13 @@
 			files = (
 				C090BA421E6F5443002369FC /* ViewController.swift in Sources */,
 				C090BA5E1E7135F5002369FC /* NewGameViewController.swift in Sources */,
+				C09BAB301E71CEB0004DCAED /* README.md in Sources */,
 				C090BA581E70B8A0002369FC /* ScoresViewController.swift in Sources */,
 				C090BA401E6F5443002369FC /* AppDelegate.swift in Sources */,
 				C090BA5C1E7129C9002369FC /* CustomActivityView.swift in Sources */,
 				C090BA521E6F56E8002369FC /* Constants.swift in Sources */,
 				C090BA541E6F6424002369FC /* Game.swift in Sources */,
+				C09BAB2D1E71C3EC004DCAED /* SimpleSplashController.swift in Sources */,
 				C090BA561E70B895002369FC /* HelpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

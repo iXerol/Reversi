@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ScoresViewController: UIViewController, UITableViewDelegate {
+/// A simple tableview controller to display a list of top scores
+/// This could easily be customized to look prettier (but I'm terrible at design), so it's flexible for 
+/// When I improve it as a personal project
+class ScoresViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     /// list of top scores
     var scoreList: [Int] = []
@@ -21,14 +24,22 @@ class ScoresViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         let userDefaults:UserDefaults = UserDefaults.standard
         scoreList = userDefaults.array(forKey: "scores") as! [Int]
-        print(scoreList)
+        scoreList = scoreList.sorted()
+        // only display the top 15
+        if(scoreList.count > 15) {
+            let slice = scoreList[0...14]
+            scoreList = Array<Int>(slice)
+        }
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return scoreList.count
     }
     
-    func tableView(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Getting the right element
         let element = scoreList[indexPath.row]
         // Instantiate a cell
