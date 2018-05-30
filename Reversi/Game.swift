@@ -35,14 +35,7 @@ class Game {
             realBoard.append(Array(repeating: 0, count:Constants.NUM_COLS))
         }
     }
-    
-    /// checkPosition: check to see if a space is empty
-    /// - Parameter row: grid row
-    /// - Parameter col: grid col
-    func checkPosition(row: Int, col: Int) {
-        
-    }
-    
+	
     /// newGame: setup a new game
     func newGame() {
         curPlayer = Constants.PLAYER_1

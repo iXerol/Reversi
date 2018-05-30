@@ -32,9 +32,9 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
     
     // - Attribution: piece images are icons from icons8.com
     /// player 1 img
-    let p1img = #imageLiteral(resourceName: "Circled 1-35")
+    let p1img = #imageLiteral(resourceName: "White Circle.png")
     /// player 2 img
-    let p2img = #imageLiteral(resourceName: "Circled 2  Filled-35")
+    let p2img = #imageLiteral(resourceName: "Black Circle.png")
     
     /// custom activity view to display when computer is moving
     var activityView: CustomActivityView!
@@ -204,7 +204,7 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
                     continue
                 }
                 /// - Attribution: board piece images from icons8.com
-                let img = (board[y][x] == Constants.PLAYER_1) ? #imageLiteral(resourceName: "Circled 1-35") : #imageLiteral(resourceName: "Circled 2  Filled-35")
+                let img = (board[y][x] == Constants.PLAYER_1) ? p1img : p2img
                 realBoard[y*8+x]?.image = img
                 realBoard[y*8+x]?.isHidden = false
             }

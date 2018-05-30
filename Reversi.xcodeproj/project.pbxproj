@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		845C896E20BF178500820D9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845C896D20BF178500820D9E /* Assets.xcassets */; };
 		C090BA401E6F5443002369FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090BA3F1E6F5443002369FC /* AppDelegate.swift */; };
 		C090BA421E6F5443002369FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090BA411E6F5443002369FC /* ViewController.swift */; };
 		C090BA451E6F5443002369FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C090BA431E6F5443002369FC /* Main.storyboard */; };
-		C090BA471E6F5443002369FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C090BA461E6F5443002369FC /* Assets.xcassets */; };
 		C090BA4A1E6F5443002369FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C090BA481E6F5443002369FC /* LaunchScreen.storyboard */; };
 		C090BA521E6F56E8002369FC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090BA511E6F56E8002369FC /* Constants.swift */; };
 		C090BA541E6F6424002369FC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090BA531E6F6424002369FC /* Game.swift */; };
@@ -23,11 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		845C896D20BF178500820D9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C090BA3C1E6F5443002369FC /* Reversi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reversi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C090BA3F1E6F5443002369FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C090BA411E6F5443002369FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C090BA441E6F5443002369FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C090BA461E6F5443002369FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C090BA491E6F5443002369FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C090BA4B1E6F5443002369FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C090BA511E6F56E8002369FC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -70,10 +70,10 @@
 		C090BA3E1E6F5443002369FC /* Reversi */ = {
 			isa = PBXGroup;
 			children = (
+				845C896D20BF178500820D9E /* Assets.xcassets */,
 				C090BA3F1E6F5443002369FC /* AppDelegate.swift */,
 				C090BA411E6F5443002369FC /* ViewController.swift */,
 				C090BA431E6F5443002369FC /* Main.storyboard */,
-				C090BA461E6F5443002369FC /* Assets.xcassets */,
 				C090BA481E6F5443002369FC /* LaunchScreen.storyboard */,
 				C090BA4B1E6F5443002369FC /* Info.plist */,
 				C090BA511E6F56E8002369FC /* Constants.swift */,
@@ -120,6 +120,7 @@
 				TargetAttributes = {
 					C090BA3B1E6F5442002369FC = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = Z27PX7Z289;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -149,7 +150,7 @@
 			files = (
 				C09BAB2B1E71ADFA004DCAED /* rules.html in Resources */,
 				C090BA4A1E6F5443002369FC /* LaunchScreen.storyboard in Resources */,
-				C090BA471E6F5443002369FC /* Assets.xcassets in Resources */,
+				845C896E20BF178500820D9E /* Assets.xcassets in Resources */,
 				C090BA451E6F5443002369FC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +293,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Z27PX7Z289;
 				INFOPLIST_FILE = Reversi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.billobob.Reversi;
@@ -305,6 +307,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Z27PX7Z289;
 				INFOPLIST_FILE = Reversi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.billobob.Reversi;
