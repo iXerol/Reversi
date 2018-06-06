@@ -11,16 +11,4 @@ import UIKit
 /// A very simple splash screen to show using the non-default launch screen
 class SimpleSplashController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        perform(#selector(SimpleSplashController.showmainmenu), with: nil, afterDelay: 2)
-    }
-    
-    func showmainmenu(){
-        performSegue(withIdentifier: "displayMain", sender: self)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }

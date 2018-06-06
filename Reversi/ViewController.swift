@@ -58,10 +58,6 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     /// boardTouch: handle a tap on the reversi board
     func boardTouch(_ sender: UITapGestureRecognizer) {
         if sender.state == .ended {
@@ -129,23 +125,20 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
     /// - Parameter player: int of the player ID that won
     func gameOver(player: Int) {
         let message: String
+		let title: String
         switch player {
         case Constants.PLAYER_1:
-            let userDefaults:UserDefaults = UserDefaults.standard
-            // insert in to top scores
-            var scorelist = userDefaults.array(forKey: "scores")
-            let calcscore = Int(p1score.text!)! + Int(p1score.text!)!*difficulty
-            message = "You won! Your score: " + String(calcscore)
-            scorelist?.append(calcscore)
-            userDefaults.set(scorelist, forKey: "scores")
-            userDefaults.synchronize()
+			title = "You won!"
+            message = "Your score: \(p1score)"
         case Constants.PLAYER_2:
-            message = "You lost :(. Try again!"
+			title = "You lost!"
+			message = "Your score: \(p1score)"
         default:
-            message = "Game is a draw!! Try again."
+			title = "Game is draw!"
+			message = "Your score: \(p1score)"
         }
         // display the alert box
-        let alert = UIAlertController(title: "Game Over!",
+        let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: UIAlertControllerStyle.alert)
         
