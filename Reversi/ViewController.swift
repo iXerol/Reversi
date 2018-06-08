@@ -35,6 +35,8 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
     let p1img = #imageLiteral(resourceName: "White Circle.png")
     /// player 2 img
     let p2img = #imageLiteral(resourceName: "Black Circle.png")
+	/// available move img
+	let validMoveImg = #imageLiteral(resourceName: "Available.png")
     
     /// custom activity view to display when computer is moving
     var activityView: CustomActivityView!
@@ -129,13 +131,13 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
         switch player {
         case Constants.PLAYER_1:
 			title = "You won!"
-            message = "Your score: \(p1score)"
+            message = "Your score: \(p1score.text!)"
         case Constants.PLAYER_2:
 			title = "You lost!"
-			message = "Your score: \(p1score)"
+			message = "Your score: \(p1score.text!)"
         default:
 			title = "Game is draw!"
-			message = "Your score: \(p1score)"
+			message = "Your score: \(p1score.text!)"
         }
         // display the alert box
         let alert = UIAlertController(title: title,
@@ -186,24 +188,31 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
     }
     
     /// paintBoard: draw all the images on the board after a move
-    func paintBoard() {
-        p1score.text = String(game.getScore(player: Constants.PLAYER_1))
-        p2score.text = String(game.getScore(player: Constants.PLAYER_2))
-        let board = game.realBoard
-        for y in 0..<Constants.NUM_ROWS {
-            for x in 0..<Constants.NUM_COLS {
-                if(board[y][x] == Constants.EMPTY) {
-                    realBoard[y*8+x]?.isHidden = true
-                    continue
-                }
-                /// - Attribution: board piece images from icons8.com
-                let img = (board[y][x] == Constants.PLAYER_1) ? p1img : p2img
-                realBoard[y*8+x]?.image = img
-                realBoard[y*8+x]?.isHidden = false
-            }
-        }
+	func paintBoard() {
+		p1score.text = String(game.getScore(player: Constants.PLAYER_1))
+		p2score.text = String(game.getScore(player: Constants.PLAYER_2))
+		let board = game.realBoard
+		for y in 0..<Constants.NUM_ROWS {
+			for x in 0..<Constants.NUM_COLS {
+				if(board[y][x] == Constants.EMPTY) {
+					realBoard[y*8+x]?.isHidden = true
+					continue
+				}
+				/// - Attribution: board piece images from icons8.com
+				let img: UIImage
+				if board[y][x] == Constants.PLAYER_1 {
+					img = p1img
+				} else if board[y][x] == Constants.PLAYER_2 {
+					img = p2img
+				} else /*if board[y][x] == Constants.VALID_POSITION */{
+					img = validMoveImg
+				}
+					realBoard[y*8+x]?.image = img
+					realBoard[y*8+x]?.isHidden = false
+			}
+		}
     }
-    
+	
     // Attribution (I spent way too much time on this):
     // -http://stackoverflow.com/questions/39972979/popover-in-swift-3-on-iphone-ios
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {

@@ -1,1 +1,1 @@
-Reversi for iPhone 6, 6s, 7. Mostly me playing around with swift
+Reversi for 4.7-inch & 5.5-inch iPhones.

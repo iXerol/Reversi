@@ -48,6 +48,7 @@ class Game {
         realBoard[3][4] = Constants.PLAYER_2
         realBoard[4][3] = Constants.PLAYER_2
         realBoard[4][4] = Constants.PLAYER_1
+		getMoves(player: 1)
     }
     
     /// opponent: quick function to get opposite player to prevent constantly writing the same ternary
@@ -66,7 +67,7 @@ class Game {
         var x = col
         var y = row
         // Automatically return invalid if first move is wrong
-        if (realBoard[y][x] != Constants.EMPTY) {
+        if realBoard[y][x] == Constants.PLAYER_1 || realBoard[y][x] == Constants.PLAYER_2 {
                 return Constants.INVALID_MOVE
         }
   
@@ -97,15 +98,22 @@ class Game {
     /// - Returns: boolean of move validity
     func isValid(row: Int, col: Int, player: Int) -> Bool {
         // quick check to make sure in bounds and empty square
-        if !((col>=0) && (col<8) && (row>=0) && (row<8) && (realBoard[row][col]==Constants.EMPTY)) {
+        if !((col>=0) && (col<8) && (row>=0) && (row<8) && (realBoard[row][col]==Constants.EMPTY || realBoard[row][col]==Constants.VALID_MOVE)) {
             return false
         }
         for direction in Constants.MOVES {
             let move = checkMove(row: row, col: col, player: player, direction: direction)
+			if player == Constants.PLAYER_2 {
+				realBoard[row][col] = Constants.EMPTY
+			}
             if (move != Constants.INVALID_MOVE) {
+				if player == Constants.PLAYER_1 {
+					realBoard[row][col] = Constants.VALID_MOVE
+				}
                 return true
             }
         }
+		realBoard[row][col] = Constants.EMPTY
         return false
     }
     
