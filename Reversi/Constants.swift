@@ -29,7 +29,7 @@ struct Constants {
     /// size of each grid piece
     static let GRID_SIZE = BOARD_DIM/8
     /// list of move tuples -- row, col format
-    static let MOVES = [(-1,0), (1,0), (0,-1), (0,1), (-1,-1), (-1, 1), (1,1), (1,-1)]
+    static let MOVES = [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, 1), (1, -1)]
     /// tuple representing an invalid move
     static let INVALID_MOVE = (999,999)
     /// board weights for minimax
