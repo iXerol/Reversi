@@ -13,7 +13,7 @@ class NewGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 	var difficulty = 0
 
 	// List to diaplay
-	var list = ["Braindead", "Easy", "Medium", "Hard (slow)"]
+	var list = ["Easy", "Medium", "Hard"]
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -41,12 +41,10 @@ class NewGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 		print(row)
 		switch row {
 		case 0:
-			difficulty = 0
-		case 1:
 			difficulty = 1
-		case 2:
+		case 1:
 			difficulty = 4
-		case 3:
+		case 2:
 			difficulty = 6
 		default:
 			break   // default to braindead in case of some weird error

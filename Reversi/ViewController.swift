@@ -38,7 +38,8 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 	var activityView: CustomActivityView!
 
 	// difficulty (braindead by default)
-	var difficulty = 0
+	var difficulty = 1
+	
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -152,8 +153,6 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		game.newGame()
 		paintBoard()
 		switch difficulty {
-		case 0:
-			aiLevel.text = "Braindead"
 		case 1:
 			aiLevel.text = "Easy"
 		case 4:
