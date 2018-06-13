@@ -1,47 +1,43 @@
-//
-//  ViewController.swift
-//  Reversi
-//
-//  Created by bill harper on 3/7/17.
-//  Copyright © 2017 bill harper. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPresentationControllerDelegate {
 
 	// - Grid image attribution: http://www.dundjinni.com/forums/uploads/Bogie/8x8_Grid_bg.png
-	/// imgview for the grid
+	// imgview for the grid
 	@IBOutlet var imgGrid: UIImageView!
-	/// player 1 score
+	// player 1 score
 	@IBOutlet weak var p1score: UILabel!
-	/// player 2 score
+	// player 2 score
 	@IBOutlet weak var p2score: UILabel!
-	/// ai level
+	// ai level
 	@IBOutlet weak var aiLevel: UILabel!
 
-	/// game representation
+	@IBAction func dismiss(_ sender: UIBarButtonItem) {
+		self.dismiss(animated: true, completion: {});
+	}
+	
+	// game representation
 	var game = Game()
 
-	/// timer for pauses after moves. To allow a bit of intermediate drawing time when using very vast AI (e.g. rand choice)
+	// timer for pauses after moves. To allow a bit of intermediate drawing time when using very vast AI (e.g. rand choice)
 	var timer = Timer()
 	let delay = 0.5
 
-	/// imageviews for all of the pieces. Dictionary with key as int=board position (y*8 + x)
+	// imageviews for all of the pieces. Dictionary with key as int=board position (y*8 + x)
 	var realBoard = [Int: UIImageView]()
 
 	// - Attribution: piece images are icons from icons8.com
-	/// player 1 img
+	// player 1 img
 	let p1img = #imageLiteral(resourceName: "White Circle.png")
-	/// player 2 img
+	// player 2 img
 	let p2img = #imageLiteral(resourceName: "Black Circle.png")
-	/// available move img
+	// available move img
 	let validMoveImg = #imageLiteral(resourceName: "Available.png")
 
-	/// custom activity view to display when computer is moving
+	// custom activity view to display when computer is moving
 	var activityView: CustomActivityView!
 
-	/// difficulty (braindead by default)
+	// difficulty (braindead by default)
 	var difficulty = 0
 
 	override func viewDidLoad() {
@@ -60,8 +56,8 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 
 	}
 
-	/// boardTouch: handle a tap on the reversi board
-	func boardTouch(_ sender: UITapGestureRecognizer) {
+	// boardTouch: handle a tap on the reversi board
+	@objc func boardTouch(_ sender: UITapGestureRecognizer) {
 		if sender.state == .ended {
 			// AI's move, ignore
 			if (game.curPlayer == Constants.PLAYER_2) {
@@ -79,10 +75,10 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		}
 	}
 
-	/// processMove: process a valid move for the player
-	/// - Parameter row: row of move
-	/// - Parameter col: col of move
-	/// - Returns: void
+	// processMove: process a valid move for the player
+	// - Parameter row: row of move
+	// - Parameter col: col of move
+	// - Returns: void
 	func processMove(row: Int, col: Int) {
 		game = game.makeMove(row: row, col: col, player: game.curPlayer, board: game.realBoard)
 		game.curPlayer = game.nextPlayer(player: game.curPlayer)
@@ -94,8 +90,8 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		timer = Timer.scheduledTimer(timeInterval: TimeInterval(delay), target: self, selector: #selector(AIMove), userInfo: nil, repeats: false)
 	}
 
-	/// AIMove: process a move for the AI.
-	func AIMove() {
+	// AIMove: process a move for the AI.
+	@objc func AIMove() {
 		// Our move, ignore
 		if (game.curPlayer == Constants.PLAYER_1) {
 			return
@@ -121,8 +117,8 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		}
 	}
 
-	/// gameOver: present the winning player and start a new game upon dismissal
-	/// - Parameter player: int of the player ID that won
+	// gameOver: present the winning player and start a new game upon dismissal
+	// - Parameter player: int of the player ID that won
 	func gameOver(player: Int) {
 		let message: String
 		let title: String
@@ -151,7 +147,7 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		}
 	}
 
-	/// restart: start a new game
+	// restart: start a new game
 	func restart() {
 		game.newGame()
 		paintBoard()
@@ -170,7 +166,7 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 
 	}
 
-	/// initialize all the UIImageViews to be added programmatically
+	// initialize all the UIImageViews to be added programmatically
 	func initializeImges() {
 		for y in 0..<Constants.NUM_ROWS {
 			for x in 0..<Constants.NUM_COLS {
@@ -186,7 +182,7 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		}
 	}
 
-	/// paintBoard: draw all the images on the board after a move
+	// paintBoard: draw all the images on the board after a move
 	func paintBoard() {
 		p1score.text = String(game.getScore(player: Constants.PLAYER_1))
 		p2score.text = String(game.getScore(player: Constants.PLAYER_2))
@@ -197,7 +193,7 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 					realBoard[y * 8 + x]?.isHidden = true
 					continue
 				}
-				/// - Attribution: board piece images from icons8.com
+				// - Attribution: board piece images from icons8.com
 				let img: UIImage
 				if board[y][x] == Constants.PLAYER_1 {
 					img = p1img
@@ -219,7 +215,7 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		return UIModalPresentationStyle.none
 	}
 
-	/// prepare for the segue to the bookmark view
+	// prepare for the segue to the bookmark view
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "NewGameSegue" {
 			let destination = segue.destination as? NewGameViewController
@@ -231,7 +227,7 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		}
 	}
 
-	/// passedDifficulty: implementation of DifficultykDelegate
+	// passedDifficulty: implementation of DifficultykDelegate
 	func passedDifficulty(difficulty: Int) {
 		print("updated difficulty : ", difficulty)
 		self.difficulty = difficulty

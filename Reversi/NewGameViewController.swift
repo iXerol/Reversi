@@ -1,26 +1,18 @@
-//
-//  NewGameViewController.swift
-//  Reversi
-//
-//  Created by bill harper on 3/9/17.
-//  Copyright © 2017 bill harper. All rights reserved.
-//
-
 import UIKit
 
-/// A simple popover to display when creating a new game to select difficulty using a pickerview
+// A simple popover to display when creating a new game to select difficulty using a pickerview
 class NewGameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-	/// difficulty selector
+	// difficulty selector
 	@IBOutlet weak var dropDown: UIPickerView!
 
-	/// delegate for passing difficulty around
+	// delegate for passing difficulty around
 	weak var difficultyDelegate: DetailDifficultyDelegate?
 
-	/// default difficulty setting
+	// default difficulty setting
 	var difficulty = 0
 
-	/// List to diaplay
+	// List to diaplay
 	var list = ["Braindead", "Easy", "Medium", "Hard (slow)"]
 
 	override func viewDidLoad() {
@@ -61,14 +53,14 @@ class NewGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 		}
 	}
 
-	/// closepop: close the new game popup
+	// closepop: close the new game popup
 	@IBAction func closepop(sender: UIButton) {
 		difficultyDelegate?.passedDifficulty(difficulty: difficulty)
 		dismiss(animated: true, completion: nil)
 	}
 }
 
-/// Our delegate to pass the url back to the detailview
+// Our delegate to pass the url back to the detailview
 protocol DetailDifficultyDelegate: class {
 	func passedDifficulty(difficulty: Int) -> Void
 }

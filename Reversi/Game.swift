@@ -1,42 +1,34 @@
-//
-//  Game.swift
-//  Reversi
-//
-//  Created by bill harper on 3/7/17.
-//  Copyright © 2017 bill harper. All rights reserved.
-//
-
 import Foundation
 
-/// class representing the game of reversi
-/// holds pieces, piece checking logic, etc.
-/// This is *not* a singleton because the AI needs to make copies of the game state for its strategy
+// class representing the game of reversi
+// holds pieces, piece checking logic, etc.
+// This is *not* a singleton because the AI needs to make copies of the game state for its strategy
 
 class Game {
-	/// the array holding the grid of pieces (true game state)
+	// the array holding the grid of pieces (true game state)
 	var realBoard = Array<Array<Int>>()
 
-	/// current player
+	// current player
 	var curPlayer = Constants.EMPTY
 
 	init() {
 		initializePieces()
 	}
 
-	/// constructor with existing board, player
+	// constructor with existing board, player
 	init(board: Array<Array<Int>>, player: Int) {
 		realBoard = board
 		curPlayer = player
 	}
 
-	/// iniitalizePieces: create the the array of pieces
+	// iniitalizePieces: create the the array of pieces
 	func initializePieces() {
 		for _ in 0..<Constants.NUM_ROWS {
 			realBoard.append(Array(repeating: 0, count: Constants.NUM_COLS))
 		}
 	}
 
-	/// newGame: setup a new game
+	// newGame: setup a new game
 	func newGame() {
 		curPlayer = Constants.PLAYER_1
 		for y in 0..<Constants.NUM_ROWS {
@@ -51,18 +43,18 @@ class Game {
 		getMoves(player: 1)
 	}
 
-	/// opponent: quick function to get opposite player to prevent constantly writing the same ternary
-	/// - Returns: int of the opposite player
+	// opponent: quick function to get opposite player to prevent constantly writing the same ternary
+	// - Returns: int of the opposite player
 	func opponent(player: Int) -> Int {
 		return (player == Constants.PLAYER_1) ? Constants.PLAYER_2 : Constants.PLAYER_1
 	}
 
-	/// checkMove: check a given move in a given direction and if so return the last piece to be flipped
-	/// - Parameter row: row for attempted move
-	/// - Paremeter col: col for attempted move
-	/// - Parameter player: player moving (int)
-	/// - Parameter direction: tuple for direction
-	/// - Returns: (Int, Int) tuple of move (Constants.INVALID_MOVE if invalid)
+	// checkMove: check a given move in a given direction and if so return the last piece to be flipped
+	// - Parameter row: row for attempted move
+	// - Paremeter col: col for attempted move
+	// - Parameter player: player moving (int)
+	// - Parameter direction: tuple for direction
+	// - Returns: (Int, Int) tuple of move (Constants.INVALID_MOVE if invalid)
 	func checkMove(row: Int, col: Int, player: Int, direction: (Int, Int)) -> (Int, Int) {
 		var x = col
 		var y = row
@@ -91,11 +83,11 @@ class Game {
 
 	}
 
-	/// isValid: check if a move is valid (in any direction). Note that isValid is separate from getMoves for AI purposes
-	/// - Parameter row: row for attempted move
-	/// - Paremeter col: col for attempted move
-	/// - Parameter player: player moving (int)
-	/// - Returns: boolean of move validity
+	// isValid: check if a move is valid (in any direction). Note that isValid is separate from getMoves for AI purposes
+	// - Parameter row: row for attempted move
+	// - Paremeter col: col for attempted move
+	// - Parameter player: player moving (int)
+	// - Returns: boolean of move validity
 	func isValid(row: Int, col: Int, player: Int) -> Bool {
 		// quick check to make sure in bounds and empty square
 		if !((col >= 0) && (col < 8) && (row >= 0) && (row < 8) && (realBoard[row][col] == Constants.EMPTY || realBoard[row][col] == Constants.VALID_MOVE)) {
@@ -118,11 +110,11 @@ class Game {
 	}
 
 
-	/// makeMove: make a move (which we already know is valid). When using manually, set curGame = makeMove(...)
-	/// - Parameter row: row of the move
-	/// - Parameter col: col of the move
-	/// - Parameter player: player id
-	/// - Returns: the Game state after moving and the player is switched (used for AI which needs deep copies)
+	// makeMove: make a move (which we already know is valid). When using manually, set curGame = makeMove(...)
+	// - Parameter row: row of the move
+	// - Parameter col: col of the move
+	// - Parameter player: player id
+	// - Returns: the Game state after moving and the player is switched (used for AI which needs deep copies)
 	func makeMove(row: Int, col: Int, player: Int, board: Array<Array<Int>>) -> Game {
 		var boardcopy = board
 		for direction in Constants.MOVES {
@@ -139,10 +131,10 @@ class Game {
 		return Game(board: boardcopy, player: player)
 	}
 
-	/// getMoves: get all legal moves for a player (human or AI)
-	/// - Paremeter player: the player to check moves for
-	/// - Parameter board: the game board
-	/// - Returns: a list of tuples representing all moves
+	// getMoves: get all legal moves for a player (human or AI)
+	// - Paremeter player: the player to check moves for
+	// - Parameter board: the game board
+	// - Returns: a list of tuples representing all moves
 	func getMoves(player: Int) -> [(Int, Int)] {
 		var movelist = [(Int, Int)]()
 		for y in 0..<Constants.NUM_ROWS {
@@ -156,10 +148,10 @@ class Game {
 		return movelist
 	}
 
-	/// nextPlayer: get the next player to move (one person may have no moves so someone goes twice)
-	/// - Parameter board: the game board
-	/// - Parameter player: the player who has just moved
-	/// - Returns: ID (int) of player to move next (or EMPTY if no moves/game over)
+	// nextPlayer: get the next player to move (one person may have no moves so someone goes twice)
+	// - Parameter board: the game board
+	// - Parameter player: the player who has just moved
+	// - Returns: ID (int) of player to move next (or EMPTY if no moves/game over)
 	func nextPlayer(player: Int) -> Int {
 		let opp = opponent(player: player)
 		if (getMoves(player: opp).count != 0) {
@@ -173,9 +165,9 @@ class Game {
 		}
 	}
 
-	/// getScore: get the raw score for a given player.
-	/// - Parameter player: player to get score for
-	/// - Returns: Score (int) -- # of player pieces on the board
+	// getScore: get the raw score for a given player.
+	// - Parameter player: player to get score for
+	// - Returns: Score (int) -- # of player pieces on the board
 	func getScore(player: Int) -> Int {
 		var playerscore = 0
 		for y in 0..<Constants.NUM_ROWS {
@@ -193,10 +185,10 @@ class Game {
 	// The board weights are used because certain potential moves are much better than others--the outermst
 	// corners/sides are best, inside is pretty good, and ring in the middle is suboptimal
 	// scoring mechanism is a bit different because we don't need the raw score, but also subtract opponent's pieces
-	/// weightedScore: get weighted score for a board for AI
-	/// - Parameter board: the game board
-	/// - Parameter player: player to move
-	/// - Returns: the weighted score (int)
+	// weightedScore: get weighted score for a board for AI
+	// - Parameter board: the game board
+	// - Parameter player: player to move
+	// - Returns: the weighted score (int)
 	func weightedScore(player: Int, board: Array<Array<Int>>) -> Int {
 		var weightedscore = 0
 		let opp = opponent(player: player)
@@ -214,8 +206,8 @@ class Game {
 		return weightedscore
 	}
 
-	/// getWinner: get the winner from a board
-	/// Returns: int of winner id
+	// getWinner: get the winner from a board
+	// Returns: int of winner id
 	func getWinner() -> Int {
 		let playerscore = getScore(player: Constants.PLAYER_1)
 		let compscore = getScore(player: Constants.PLAYER_2)
@@ -226,9 +218,9 @@ class Game {
 	}
 
 
-	/// Strategy -- a function which selects the appropriate strategy for use in the ViewController
-	/// - Parameter depth: recursion depth for minimax (note: 0 = uses random choice instead)
-	/// - Returns: game state after moving
+	// Strategy -- a function which selects the appropriate strategy for use in the ViewController
+	// - Parameter depth: recursion depth for minimax (note: 0 = uses random choice instead)
+	// - Returns: game state after moving
 	func strategy(depth: Int) -> Game {
 		let move: (Int, Int)
 		if (depth > 0) {
@@ -243,11 +235,11 @@ class Game {
 	// MARK: MiniMax AI (with alphabeta pruning, to the extent it helps)
 
 	// one (of many) explanations: https://www.cs.cornell.edu/courses/cs312/2002sp/lectures/rec21.htm
-	/// miniMax: minimax AI inplementation
-	/// - Parameter player: the player to figure moves for
-	/// - Parameter depth: depth to recurse
-	/// - Paraemeter game: game copy beign evaluated
-	/// - Returns: (Int, (Int, Int)) -- value and move
+	// miniMax: minimax AI inplementation
+	// - Parameter player: the player to figure moves for
+	// - Parameter depth: depth to recurse
+	// - Paraemeter game: game copy beign evaluated
+	// - Returns: (Int, (Int, Int)) -- value and move
 	func miniMax(player: Int, depth: Int, alpha: Int, beta: Int, game: Game) -> (Int, (Int, Int)) {
 		var alpha = alpha
 		if (depth == 0) {
@@ -294,18 +286,18 @@ class Game {
 
 	// MARK: Other strategies
 
-	/// randomStrat: simple random choice AI
-	/// - Parameter player: the player to move (int)
-	/// - Returns: int tuple representing random move
+	// randomStrat: simple random choice AI
+	// - Parameter player: the player to move (int)
+	// - Returns: int tuple representing random move
 	func randomStrat(player: Int) -> (Int, Int) {
 		let moves = getMoves(player: player)
 		let randomIndex = Int(arc4random_uniform(UInt32(moves.count)))
 		return moves[randomIndex]
 	}
 
-	/// simpleMax: -- for testing only--- simple best immediate move for AI (no depth)
-	/// - Parameter player: the player to move (int)
-	/// - Returns: int tuple representing chosen move
+	// simpleMax: -- for testing only--- simple best immediate move for AI (no depth)
+	// - Parameter player: the player to move (int)
+	// - Returns: int tuple representing chosen move
 
 	func simpleMax(player: Int) -> (Int, Int) {
 		let moves = getMoves(player: player)

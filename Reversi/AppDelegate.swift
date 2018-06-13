@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Reversi
-//
-//  Created by bill harper on 3/7/17.
-//  Copyright © 2017 bill harper. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

@@ -1,38 +1,30 @@
-//
-//  Constants.swift
-//  Reversi
-//
-//  Created by bill harper on 3/7/17.
-//  Copyright © 2017 bill harper. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
-/// A simple class to hold some constants used in the game
+// A simple class to hold some constants used in the game
 
 struct Constants {
-    /// number of rows
+    // number of rows
     static let NUM_ROWS = 8
-    /// number of columns
+    // number of columns
     static let NUM_COLS = 8
-    /// player 1 id
+    // player 1 id
     static let PLAYER_1 = 1
-    /// player 2 id
+    // player 2 id
     static let PLAYER_2 = 2
-    /// empty slot id
+    // empty slot id
     static let EMPTY = 0
-	/// valid move for player 1
+	// valid move for player 1
 	static let VALID_MOVE = 10
-    /// board width/height
+    // board width/height
     static let BOARD_DIM = 272
-    /// size of each grid piece
+    // size of each grid piece
     static let GRID_SIZE = BOARD_DIM/8
-    /// list of move tuples -- row, col format
+    // list of move tuples -- row, col format
     static let MOVES = [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, 1), (1, -1)]
-    /// tuple representing an invalid move
+    // tuple representing an invalid move
     static let INVALID_MOVE = (999,999)
-    /// board weights for minimax
+    // board weights for minimax
     static let BOARD_WEIGHTS = [
              [120, -20,  20,   5,   5,  20, -20, 120],
              [-20, -40,  -5,  -5,  -5,  -5, -40, -20],
