@@ -69,18 +69,18 @@
 			isa = PBXGroup;
 			children = (
 				845C896D20BF178500820D9E /* Assets.xcassets */,
+				C090BA431E6F5443002369FC /* Main.storyboard */,
+				C090BA481E6F5443002369FC /* LaunchScreen.storyboard */,
 				C090BA3F1E6F5443002369FC /* AppDelegate.swift */,
 				C090BA411E6F5443002369FC /* ViewController.swift */,
 				C090BA5B1E7129C9002369FC /* CustomActivityView.swift */,
-				C090BA431E6F5443002369FC /* Main.storyboard */,
-				C090BA481E6F5443002369FC /* LaunchScreen.storyboard */,
-				C090BA4B1E6F5443002369FC /* Info.plist */,
-				C090BA511E6F56E8002369FC /* Constants.swift */,
-				C090BA531E6F6424002369FC /* Game.swift */,
 				C090BA551E70B895002369FC /* HelpViewController.swift */,
 				C090BA5D1E7135F5002369FC /* NewGameViewController.swift */,
-				C09BAB2A1E71ADFA004DCAED /* rules.html */,
 				C09BAB2C1E71C3EC004DCAED /* SimpleSplashController.swift */,
+				C090BA531E6F6424002369FC /* Game.swift */,
+				C090BA511E6F56E8002369FC /* Constants.swift */,
+				C09BAB2A1E71ADFA004DCAED /* rules.html */,
+				C090BA4B1E6F5443002369FC /* Info.plist */,
 			);
 			path = Reversi;
 			sourceTree = "<group>";

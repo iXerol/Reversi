@@ -193,14 +193,15 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 					continue
 				}
 				// - Attribution: board piece images from icons8.com
-				let img: UIImage
-				if board[y][x] == Constants.PLAYER_1 {
-					img = p1img
-				} else if board[y][x] == Constants.PLAYER_2 {
-					img = p2img
-				} else /*if board[y][x] == Constants.VALID_POSITION */ {
-					img = validMoveImg
-				}
+				let img = (board[y][x] == Constants.PLAYER_1) ? p1img : p2img
+				realBoard[y * 8 + x]?.image = img
+				realBoard[y * 8 + x]?.isHidden = false
+			}
+		}
+		if game.curPlayer == Constants.PLAYER_1 {
+			let validMoves = game.getMoves(player: game.curPlayer)
+			let img = validMoveImg
+			for (y, x) in validMoves {
 				realBoard[y * 8 + x]?.image = img
 				realBoard[y * 8 + x]?.isHidden = false
 			}

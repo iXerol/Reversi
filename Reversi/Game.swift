@@ -59,13 +59,13 @@ class Game {
 		var x = col
 		var y = row
 		// Automatically return invalid if first move is wrong
-		if realBoard[y][x] == Constants.PLAYER_1 || realBoard[y][x] == Constants.PLAYER_2 {
+		if realBoard[y][x] != Constants.EMPTY {
 			return Constants.INVALID_MOVE
 		}
 
 		x = col + direction.1
 		y = row + direction.0
-		if !((x >= 0) && (x < 8) && (y >= 0) && (y < 8)) {
+		if !(x >= 0 && x < 8 && y >= 0 && y < 8) {
 			return Constants.INVALID_MOVE
 		}
 
@@ -74,7 +74,7 @@ class Game {
 		}
 
 		let opp = opponent(player: player)
-		while ((x >= 0) && (x < 8) && (y >= 0) && (y < 8) && (realBoard[y][x] == opp)) {
+		while (x >= 0 && x < 8 && y >= 0 && y < 8 && realBoard[y][x] == opp) {
 			x = x + direction.1
 			y = y + direction.0
 		}
@@ -90,18 +90,12 @@ class Game {
 	// - Returns: boolean of move validity
 	func isValid(row: Int, col: Int, player: Int) -> Bool {
 		// quick check to make sure in bounds and empty square
-		if !((col >= 0) && (col < 8) && (row >= 0) && (row < 8) && (realBoard[row][col] == Constants.EMPTY || realBoard[row][col] == Constants.VALID_MOVE)) {
+		if !(col >= 0 && col < 8 && row >= 0 && row < 8 && realBoard[row][col] == Constants.EMPTY) {
 			return false
 		}
 		for direction in Constants.MOVES {
 			let move = checkMove(row: row, col: col, player: player, direction: direction)
-			if player == Constants.PLAYER_2 {
-				realBoard[row][col] = Constants.EMPTY
-			}
 			if (move != Constants.INVALID_MOVE) {
-				if player == Constants.PLAYER_1 {
-					realBoard[row][col] = Constants.VALID_MOVE
-				}
 				return true
 			}
 		}
