@@ -14,8 +14,6 @@ struct Constants {
     static let PLAYER_2 = 2
     // empty slot id
     static let EMPTY = 0
-	// valid move for player 1
-	static let VALID_MOVE = 10
     // board width/height
     static let BOARD_DIM = 272
     // size of each grid piece

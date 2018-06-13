@@ -200,9 +200,8 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		}
 		if game.curPlayer == Constants.PLAYER_1 {
 			let validMoves = game.getMoves(player: game.curPlayer)
-			let img = validMoveImg
 			for (y, x) in validMoves {
-				realBoard[y * 8 + x]?.image = img
+				realBoard[y * 8 + x]?.image = validMoveImg
 				realBoard[y * 8 + x]?.isHidden = false
 			}
 		}
