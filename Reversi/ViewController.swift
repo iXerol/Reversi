@@ -1,8 +1,8 @@
 import UIKit
 
 class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPresentationControllerDelegate {
-
-	// - Grid image attribution: http://www.dundjinni.com/forums/uploads/Bogie/8x8_Grid_bg.png
+	
+	// http://www.dundjinni.com/forums/uploads/Bogie/8x8_Grid_bg.png
 	// imgview for the grid
 	@IBOutlet var imgGrid: UIImageView!
 	// player 1 score
@@ -11,60 +11,54 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 	@IBOutlet weak var p2score: UILabel!
 	// ai level
 	@IBOutlet weak var aiLevel: UILabel!
-
+	
 	@IBAction func dismiss(_ sender: UIBarButtonItem) {
 		self.dismiss(animated: true, completion: {});
 	}
 	
-	// game representation
 	var game = Game()
-
-	// timer for pauses after moves. To allow a bit of intermediate drawing time when using very vast AI (e.g. rand choice)
+	
+	// 落子后停顿，给渲染、AI 落子时间
 	var timer = Timer()
 	let delay = 0.5
-
-	// imageviews for all of the pieces. Dictionary with key as int=board position (y*8 + x)
+	
 	var realBoard = [Int: UIImageView]()
-
-	// - Attribution: piece images are icons from icons8.com
+	
 	// player 1 img
 	let p1img = #imageLiteral(resourceName: "White Circle.png")
 	// player 2 img
 	let p2img = #imageLiteral(resourceName: "Black Circle.png")
-	// available move img
+	// valid move img
 	let validMoveImg = #imageLiteral(resourceName: "Available.png")
-
-	// custom activity view to display when computer is moving
+	
+	// AI 计算时显示
 	var activityView: CustomActivityView!
-
+	
 	// difficulty (braindead by default)
 	var difficulty = 1
 	
-
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.boardTouch(_:)))
-		// setup the activity view
-		activityView = CustomActivityView(frame: CGRect(x: imgGrid.frame.size.width / 2, y: imgGrid.frame.size.width / 2, width: view.frame.size.width / 6, height: view.frame.size.width / 6))
+		activityView = CustomActivityView(frame: CGRect(x: imgGrid.frame.size.width / 8 * 3, y: imgGrid.frame.size.width / 8 * 3, width: view.frame.size.width / 16 * 3, height: view.frame.size.width / 16 * 3))
 		imgGrid.addSubview(activityView)
-		// begin with it hidden
 		activityView.isHidden = true;
 		imgGrid.isUserInteractionEnabled = true
 		imgGrid.addGestureRecognizer(tapGesture)
 		game.newGame()
 		initializeImges()
 		paintBoard()
-
+		
 	}
-
-	// boardTouch: handle a tap on the reversi board
+	
+	// boardTouch: 处理点击操作
 	@objc func boardTouch(_ sender: UITapGestureRecognizer) {
 		if sender.state == .ended {
-			// AI's move, ignore
+			// 当 AI 落子时，忽略点击
 			if (game.curPlayer == Constants.PLAYER_2) {
 				return
 			}
-			// stop the timer in case of multiple taps
 			timer.invalidate()
 			let place = sender.location(in: imgGrid)
 			let col = Int(place.x / CGFloat(Constants.GRID_SIZE))
@@ -75,11 +69,10 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 			}
 		}
 	}
-
-	// processMove: process a valid move for the player
-	// - Parameter row: row of move
-	// - Parameter col: col of move
-	// - Returns: void
+	
+	// processMove: 处理落子
+	// - Parameter row: 落子行
+	// - Parameter col: 落子列
 	func processMove(row: Int, col: Int) {
 		game = game.makeMove(row: row, col: col, player: game.curPlayer, board: game.realBoard)
 		game.curPlayer = game.nextPlayer(player: game.curPlayer)
@@ -90,10 +83,9 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		}
 		timer = Timer.scheduledTimer(timeInterval: TimeInterval(delay), target: self, selector: #selector(AIMove), userInfo: nil, repeats: false)
 	}
-
-	// AIMove: process a move for the AI.
+	
+	// AIMove: 处理 AI 落子
 	@objc func AIMove() {
-		// Our move, ignore
 		if (game.curPlayer == Constants.PLAYER_1) {
 			return
 		} else if (game.curPlayer == Constants.EMPTY) {    // game is over
@@ -101,7 +93,7 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 			return
 		}
 		activityView.showActivityView()
-		// Move to a background thread to do some long running work
+		// 后台线程处理计算
 		DispatchQueue.global(qos: .userInitiated).async {
 			self.game = self.game.strategy(depth: self.difficulty)
 			self.game.curPlayer = self.game.nextPlayer(player: self.game.curPlayer)
@@ -117,9 +109,9 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 			}
 		}
 	}
-
-	// gameOver: present the winning player and start a new game upon dismissal
-	// - Parameter player: int of the player ID that won
+	
+	// gameOver: 显示成绩
+	// - Parameter player: 胜者 ID
 	func gameOver(player: Int) {
 		let message: String
 		let title: String
@@ -138,17 +130,18 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		let alert = UIAlertController(title: title,
 									  message: message,
 									  preferredStyle: UIAlertControllerStyle.alert)
-
+		
 		let cancelAction = UIAlertAction(title: "Play Again",
-										 style: .cancel, handler: nil)
-
+										 style: .cancel,
+										 handler: nil)
+		
 		alert.addAction(cancelAction)
 		self.present(alert, animated: true) {
 			self.restart()
 		}
 	}
-
-	// restart: start a new game
+	
+	// restart: 重新开始游戏
 	func restart() {
 		game.newGame()
 		paintBoard()
@@ -162,10 +155,10 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		default:
 			aiLevel.text = "Error"
 		}
-
+		
 	}
-
-	// initialize all the UIImageViews to be added programmatically
+	
+	// 初始化所有 UIImageView
 	func initializeImges() {
 		for y in 0..<Constants.NUM_ROWS {
 			for x in 0..<Constants.NUM_COLS {
@@ -180,8 +173,8 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 			}
 		}
 	}
-
-	// paintBoard: draw all the images on the board after a move
+	
+	// paintBoard: 落子后绘制棋盘
 	func paintBoard() {
 		p1score.text = String(game.getScore(player: Constants.PLAYER_1))
 		p2score.text = String(game.getScore(player: Constants.PLAYER_2))
@@ -206,15 +199,14 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 			}
 		}
 	}
-
-	// Attribution (I spent way too much time on this):
+	
 	// -http://stackoverflow.com/questions/39972979/popover-in-swift-3-on-iphone-ios
 	func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
 		// return UIModalPresentationStyle.FullScreen
 		return UIModalPresentationStyle.none
 	}
-
-	// prepare for the segue to the bookmark view
+	
+	// 重载 prepare
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "NewGameSegue" {
 			let destination = segue.destination as? NewGameViewController
@@ -222,13 +214,12 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 			destination?.popoverPresentationController?.delegate = self
 			destination?.difficultyDelegate = self
 			destination?.popoverPresentationController?.sourceView = sender as? UIView
-//            destination?.popoverPresentationController?.sourceRect = sender.bounds
+			//            destination?.popoverPresentationController?.sourceRect = sender.bounds
 		}
 	}
-
-	// passedDifficulty: implementation of DifficultykDelegate
+	
+	// passedDifficulty: 更新 difficulty
 	func passedDifficulty(difficulty: Int) {
-		print("updated difficulty : ", difficulty)
 		self.difficulty = difficulty
 		restart()
 	}

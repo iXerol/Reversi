@@ -21,7 +21,18 @@
 		C09BAB2D1E71C3EC004DCAED /* SimpleSplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09BAB2C1E71C3EC004DCAED /* SimpleSplashController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		840806E120D18E4D00135339 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C090BA341E6F5442002369FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C090BA3B1E6F5442002369FC;
+			remoteInfo = Reversi;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		840806DC20D18E4D00135339 /* ReversiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReversiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		845C896D20BF178500820D9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C090BA3C1E6F5443002369FC /* Reversi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reversi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C090BA3F1E6F5443002369FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +50,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		840806D920D18E4D00135339 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C090BA391E6F5442002369FC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -61,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				C090BA3C1E6F5443002369FC /* Reversi.app */,
+				840806DC20D18E4D00135339 /* ReversiTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,6 +107,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		840806DB20D18E4D00135339 /* ReversiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 840806E320D18E4D00135339 /* Build configuration list for PBXNativeTarget "ReversiTests" */;
+			buildPhases = (
+				840806D820D18E4D00135339 /* Sources */,
+				840806D920D18E4D00135339 /* Frameworks */,
+				840806DA20D18E4D00135339 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				840806E220D18E4D00135339 /* PBXTargetDependency */,
+			);
+			name = ReversiTests;
+			productName = ReversiTests;
+			productReference = 840806DC20D18E4D00135339 /* ReversiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C090BA3B1E6F5442002369FC /* Reversi */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C090BA4E1E6F5443002369FC /* Build configuration list for PBXNativeTarget "Reversi" */;
@@ -111,13 +148,19 @@
 		C090BA341E6F5442002369FC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = "bill harper";
+				ORGANIZATIONNAME = "Xerol Wong";
 				TargetAttributes = {
+					840806DB20D18E4D00135339 = {
+						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = Z27PX7Z289;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C090BA3B1E6F5442002369FC;
+					};
 					C090BA3B1E6F5442002369FC = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = Z27PX7Z289;
+						DevelopmentTeam = 86F54SQ6BN;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -136,11 +179,19 @@
 			projectRoot = "";
 			targets = (
 				C090BA3B1E6F5442002369FC /* Reversi */,
+				840806DB20D18E4D00135339 /* ReversiTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		840806DA20D18E4D00135339 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C090BA3A1E6F5442002369FC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +206,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		840806D820D18E4D00135339 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C090BA381E6F5442002369FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -171,6 +229,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		840806E220D18E4D00135339 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C090BA3B1E6F5442002369FC /* Reversi */;
+			targetProxy = 840806E120D18E4D00135339 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C090BA431E6F5443002369FC /* Main.storyboard */ = {
@@ -192,6 +258,68 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		840806E420D18E4D00135339 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z27PX7Z289;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ReversiTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ixerol.ReversiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reversi.app/Reversi";
+			};
+			name = Debug;
+		};
+		840806E520D18E4D00135339 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z27PX7Z289;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ReversiTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ixerol.ReversiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reversi.app/Reversi";
+			};
+			name = Release;
+		};
 		C090BA4C1E6F5443002369FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -289,10 +417,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Z27PX7Z289;
+				DEVELOPMENT_TEAM = 86F54SQ6BN;
 				INFOPLIST_FILE = Reversi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ixerol.Reversi;
+				PRODUCT_BUNDLE_IDENTIFIER = me.ixerol.Reversi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -303,10 +431,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Z27PX7Z289;
+				DEVELOPMENT_TEAM = 86F54SQ6BN;
 				INFOPLIST_FILE = Reversi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ixerol.Reversi;
+				PRODUCT_BUNDLE_IDENTIFIER = me.ixerol.Reversi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -316,6 +444,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		840806E320D18E4D00135339 /* Build configuration list for PBXNativeTarget "ReversiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				840806E420D18E4D00135339 /* Debug */,
+				840806E520D18E4D00135339 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C090BA371E6F5442002369FC /* Build configuration list for PBXProject "Reversi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

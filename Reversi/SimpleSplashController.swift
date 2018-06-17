@@ -1,6 +1,6 @@
 import UIKit
 
-// A very simple splash screen to show using the non-default launch screen
+// 启动介面
 class SimpleSplashController: UIViewController {
-
+	
 }
