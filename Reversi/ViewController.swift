@@ -40,15 +40,14 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.boardTouch(_:)))
-		activityView = CustomActivityView(frame: CGRect(x: imgGrid.frame.size.width / 8 * 3, y: imgGrid.frame.size.width / 8 * 3, width: view.frame.size.width / 16 * 3, height: view.frame.size.width / 16 * 3))
-		imgGrid.addSubview(activityView)
-		activityView.isHidden = true;
+		activityView = CustomActivityView(frame: CGRect(x: Constants.BOARD_DIM / 8 * 3, y: Constants.BOARD_DIM / 8 * 3, width: Constants.BOARD_DIM / 4, height: Constants.BOARD_DIM / 4))
 		imgGrid.isUserInteractionEnabled = true
 		imgGrid.addGestureRecognizer(tapGesture)
 		game.newGame()
 		initializeImges()
 		paintBoard()
-		
+		imgGrid.addSubview(activityView)
+		activityView.isHidden = true;		
 	}
 	
 	// boardTouch: 处理点击操作
