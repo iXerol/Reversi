@@ -87,7 +87,6 @@ class Game {
 	// - Parameter player: 落子玩家
 	// - Returns: 有效/无效的布尔值
 	func isValid(row: Int, col: Int, player: Int) -> Bool {
-		// quick check to make sure in bounds and empty square
 		if !(col >= 0 && col < 8 && row >= 0 && row < 8 && realBoard[row][col] == Constants.EMPTY) {
 			return false
 		}

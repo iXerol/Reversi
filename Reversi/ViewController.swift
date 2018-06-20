@@ -3,13 +3,12 @@ import UIKit
 class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPresentationControllerDelegate {
 	
 	// http://www.dundjinni.com/forums/uploads/Bogie/8x8_Grid_bg.png
-	// imgview for the grid
 	@IBOutlet var imgGrid: UIImageView!
-	// player 1 score
+	// player 1 成績
 	@IBOutlet weak var p1score: UILabel!
-	// player 2 score
+	// player 2 成績
 	@IBOutlet weak var p2score: UILabel!
-	// ai level
+	// AI level
 	@IBOutlet weak var aiLevel: UILabel!
 	
 	@IBAction func dismiss(_ sender: UIBarButtonItem) {
@@ -34,7 +33,7 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 	// AI 计算时显示
 	var activityView: CustomActivityView!
 	
-	// difficulty (braindead by default)
+	// difficulty (缺省 easy)
 	var difficulty = 1
 	
 	
@@ -77,7 +76,7 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		game = game.makeMove(row: row, col: col, player: game.curPlayer, board: game.realBoard)
 		game.curPlayer = game.nextPlayer(player: game.curPlayer)
 		paintBoard()
-		if (game.curPlayer == Constants.EMPTY) {    // game is over
+		if (game.curPlayer == Constants.EMPTY) {    // game over
 			gameOver(player: game.getWinner())
 			return
 		}
@@ -88,7 +87,7 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 	@objc func AIMove() {
 		if (game.curPlayer == Constants.PLAYER_1) {
 			return
-		} else if (game.curPlayer == Constants.EMPTY) {    // game is over
+		} else if (game.curPlayer == Constants.EMPTY) {    // game over
 			gameOver(player: game.getWinner())
 			return
 		}
@@ -100,10 +99,9 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 			DispatchQueue.main.async {
 				self.activityView.hideActivityView()
 				self.paintBoard()
-				// we need to check if the current player has moves
 				if (self.game.curPlayer == Constants.PLAYER_2) {
 					self.AIMove()
-				} else if (self.game.curPlayer == Constants.EMPTY) {    // game is over
+				} else if (self.game.curPlayer == Constants.EMPTY) {    // game over
 					self.gameOver(player: self.game.getWinner())
 				}
 			}
@@ -126,19 +124,23 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 			title = "Game is draw!"
 			message = "Your score: \(p1score.text!)"
 		}
-		// display the alert box
+		// 显示对话框
 		let alert = UIAlertController(title: title,
 									  message: message,
 									  preferredStyle: UIAlertControllerStyle.alert)
 		
-		let cancelAction = UIAlertAction(title: "Play Again",
+		let restartAction = UIAlertAction(title: "Play Again",
+										  style: .default,
+										  handler: { _ in self.restart() })
+		
+		let cancelAction = UIAlertAction(title: "Cancel",
 										 style: .cancel,
 										 handler: nil)
 		
+		
 		alert.addAction(cancelAction)
-		self.present(alert, animated: true) {
-			self.restart()
-		}
+		alert.addAction(restartAction)
+		self.present(alert, animated: true)
 	}
 	
 	// restart: 重新开始游戏
@@ -185,7 +187,6 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 					realBoard[y * 8 + x]?.isHidden = true
 					continue
 				}
-				// - Attribution: board piece images from icons8.com
 				let img = (board[y][x] == Constants.PLAYER_1) ? p1img : p2img
 				realBoard[y * 8 + x]?.image = img
 				realBoard[y * 8 + x]?.isHidden = false

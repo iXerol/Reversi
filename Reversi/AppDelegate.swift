@@ -7,14 +7,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		let userDefaults: UserDefaults = UserDefaults.standard
-		// insert empty favs if doesn't exist
-		var scorelist = userDefaults.array(forKey: "scores")
-		if (scorelist == nil) {
-			scorelist = [Int]()
-			userDefaults.set(scorelist, forKey: "scores")
-			userDefaults.synchronize()
-		}
 		return true
 	}
 

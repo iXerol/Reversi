@@ -4,7 +4,6 @@ class CustomActivityView: UIView {
 	
 	let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
 	
-	// Custom view initialization
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.backgroundColor = .black
@@ -22,7 +21,6 @@ class CustomActivityView: UIView {
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-		// add activity indicator
 		
 	}
 	
