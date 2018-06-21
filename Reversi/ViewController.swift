@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPresentationControllerDelegate {
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 	
 	// http://www.dundjinni.com/forums/uploads/Bogie/8x8_Grid_bg.png
 	@IBOutlet var imgGrid: UIImageView!
@@ -13,6 +13,46 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 	
 	@IBAction func dismiss(_ sender: UIBarButtonItem) {
 		self.dismiss(animated: true, completion: {});
+	}
+	
+	@IBAction func NewGame(_ sender: Any?) {
+		let title = "Restart"
+		let message = "Select difficulty:"
+		let difficultySheet = UIAlertController(title: title,
+												message: message,
+												preferredStyle: .actionSheet)
+		
+		let easyAction = UIAlertAction(title: "Easy",
+										  style: .default,
+										  handler: {
+											_ in
+											self.passedDifficulty(difficulty: 0)
+		})
+		
+		let mediumAction = UIAlertAction(title: "Medium",
+										  style: .default,
+										  handler: {
+											_ in
+											self.passedDifficulty(difficulty: 2)
+		})
+		
+		let hardAction = UIAlertAction(title: "Hard",
+										  style: .default,
+										  handler: {
+											_ in
+											self.passedDifficulty(difficulty: 6)
+		})
+		
+		let cancelAction = UIAlertAction(title: "Cancel",
+										 style: .cancel,
+										 handler: nil)
+		
+		
+		difficultySheet.addAction(easyAction)
+		difficultySheet.addAction(mediumAction)
+		difficultySheet.addAction(hardAction)
+		difficultySheet.addAction(cancelAction)
+		self.present(difficultySheet, animated: true)
 	}
 	
 	var game = Game()
@@ -204,18 +244,6 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 	func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
 		// return UIModalPresentationStyle.FullScreen
 		return UIModalPresentationStyle.none
-	}
-	
-	// 重载 prepare
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "NewGameSegue" {
-			let destination = segue.destination as? NewGameViewController
-			destination?.modalPresentationStyle = UIModalPresentationStyle.popover
-			destination?.popoverPresentationController?.delegate = self
-			destination?.difficultyDelegate = self
-			destination?.popoverPresentationController?.sourceView = sender as? UIView
-			//            destination?.popoverPresentationController?.sourceRect = sender.bounds
-		}
 	}
 	
 	// passedDifficulty: 更新 difficulty

@@ -16,7 +16,6 @@
 		C090BA541E6F6424002369FC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090BA531E6F6424002369FC /* Game.swift */; };
 		C090BA561E70B895002369FC /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090BA551E70B895002369FC /* HelpViewController.swift */; };
 		C090BA5C1E7129C9002369FC /* CustomActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090BA5B1E7129C9002369FC /* CustomActivityView.swift */; };
-		C090BA5E1E7135F5002369FC /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090BA5D1E7135F5002369FC /* NewGameViewController.swift */; };
 		C09BAB2B1E71ADFA004DCAED /* rules.html in Resources */ = {isa = PBXBuildFile; fileRef = C09BAB2A1E71ADFA004DCAED /* rules.html */; };
 		C09BAB2D1E71C3EC004DCAED /* SimpleSplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09BAB2C1E71C3EC004DCAED /* SimpleSplashController.swift */; };
 /* End PBXBuildFile section */
@@ -44,7 +43,6 @@
 		C090BA531E6F6424002369FC /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		C090BA551E70B895002369FC /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		C090BA5B1E7129C9002369FC /* CustomActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomActivityView.swift; sourceTree = "<group>"; };
-		C090BA5D1E7135F5002369FC /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		C09BAB2A1E71ADFA004DCAED /* rules.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = rules.html; sourceTree = "<group>"; };
 		C09BAB2C1E71C3EC004DCAED /* SimpleSplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSplashController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,7 +92,6 @@
 				C090BA411E6F5443002369FC /* ViewController.swift */,
 				C090BA5B1E7129C9002369FC /* CustomActivityView.swift */,
 				C090BA551E70B895002369FC /* HelpViewController.swift */,
-				C090BA5D1E7135F5002369FC /* NewGameViewController.swift */,
 				C09BAB2C1E71C3EC004DCAED /* SimpleSplashController.swift */,
 				C090BA531E6F6424002369FC /* Game.swift */,
 				C090BA511E6F56E8002369FC /* Constants.swift */,
@@ -149,7 +146,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Xerol Wong";
 				TargetAttributes = {
 					840806DB20D18E4D00135339 = {
@@ -218,7 +215,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C090BA421E6F5443002369FC /* ViewController.swift in Sources */,
-				C090BA5E1E7135F5002369FC /* NewGameViewController.swift in Sources */,
 				C090BA401E6F5443002369FC /* AppDelegate.swift in Sources */,
 				C090BA5C1E7129C9002369FC /* CustomActivityView.swift in Sources */,
 				C090BA521E6F56E8002369FC /* Constants.swift in Sources */,
@@ -329,15 +325,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -379,15 +383,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
