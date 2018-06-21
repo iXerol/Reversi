@@ -8,7 +8,7 @@ class NewGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 	weak var difficultyDelegate: DetailDifficultyDelegate?
 	
 	// 缺省难度
-	var difficulty = 1
+	var difficulty = 0
 	
 	// 显示 list
 	var list = ["Easy", "Medium", "Hard"]
@@ -39,9 +39,9 @@ class NewGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 		print(row)
 		switch row {
 		case 0:
-			difficulty = 1
+			difficulty = 0
 		case 1:
-			difficulty = 4
+			difficulty = 2
 		case 2:
 			difficulty = 6
 		default:

@@ -228,6 +228,7 @@ class Game {
 	// - Returns: (Int, (Int, Int)) -- 评估价值和落子位置
 	func miniMax(player: Int, depth: Int, alpha: Int, beta: Int, game: Game) -> (Int, (Int, Int)) {
 		var alpha = alpha
+		// 若搜索深度为 0 则直接返回评估值
 		if (depth == 0) {
 			return (weightedScore(player: player, board: game.realBoard), Constants.INVALID_MOVE)
 		}
@@ -235,7 +236,7 @@ class Game {
 		// 若当前玩家无可落子位置
 		if (moves.count == 0) {
 			let oppmoves = getMoves(player: opponent(player: player))
-			// 若对方也无可落子位置，游戏结束，返回评估值
+			// 若对方也无可落子位置，游戏结束，返回评估值（非加权）
 			if (oppmoves.count == 0) {
 				let score = getScore(player: player)
 				if (score == 0) {
@@ -253,11 +254,14 @@ class Game {
 		
 		var best_move = moves[0]
 		for move in moves {
+			// 若下界高于上界，说明此时此分枝的最优状况也不可能超过其他分枝，进行剪枝
 			if alpha >= beta {
 				break;
 			}
 			let newgame = game.makeMove(row: move.0, col: move.1, player: player, board: game.realBoard)
+			// 模拟对方落子时递归调用自身新建棋局，深度减一，上下界（alpha, beta）取负
 			let minireturn = miniMax(player: opponent(player: player), depth: depth - 1, alpha: -beta, beta: -alpha, game: newgame)
+			// 若新棋局比当前下界状况更优则更新下界与最优落子
 			if ((minireturn.0 * -1) > alpha) {
 				alpha = -minireturn.0
 				best_move = move

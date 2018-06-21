@@ -34,7 +34,7 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 	var activityView: CustomActivityView!
 	
 	// difficulty (缺省 easy)
-	var difficulty = 1
+	var difficulty = 0
 	
 	
 	override func viewDidLoad() {
@@ -147,9 +147,9 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 		game.newGame()
 		paintBoard()
 		switch difficulty {
-		case 1:
+		case 0:
 			aiLevel.text = "Easy"
-		case 4:
+		case 2:
 			aiLevel.text = "Medium"
 		case 6:
 			aiLevel.text = "Hard"
