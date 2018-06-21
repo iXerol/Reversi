@@ -251,7 +251,6 @@ class Game {
 		}
 		// 否则返回最好落子
 		
-		
 		var best_move = moves[0]
 		for move in moves {
 			if alpha >= beta {

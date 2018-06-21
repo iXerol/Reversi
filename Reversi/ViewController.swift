@@ -24,9 +24,9 @@ class ViewController: UIViewController, DetailDifficultyDelegate, UIPopoverPrese
 	var realBoard = [Int: UIImageView]()
 	
 	// player 1 img
-	let p1img = #imageLiteral(resourceName: "White Circle.png")
+	let p1img = #imageLiteral(resourceName: "Black Circle.png")
 	// player 2 img
-	let p2img = #imageLiteral(resourceName: "Black Circle.png")
+	let p2img = #imageLiteral(resourceName: "White Circle.png")
 	// valid move img
 	let validMoveImg = #imageLiteral(resourceName: "Available.png")
 	
